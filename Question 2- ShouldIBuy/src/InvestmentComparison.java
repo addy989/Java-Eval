@@ -1,50 +1,32 @@
 public class InvestmentComparison {
     public static void main(String[] args) {
-        // Home Loan parameters
-        double loanAmount = 1000000; //10 lakhs
-        double interestRate = 10; // 10% annual interest rate
-        int tenure = 15; // 15 years
-        double depreciationRate = 5; // 5% depr rate
-        double appreciationRate = 3; // 3% appr rate
+        double homevalue = 1000000;
+        double interestRate = 10;
+        int tenure = 15;
 
-        // Create HomeLoan object
-        HomeLoan homeLoan = new HomeLoan(loanAmount, interestRate, tenure, depreciationRate, appreciationRate);
+        double appreciationRate = 3;
+        double salvage = 500000;
 
-        // Call the HomeLoan method to calculate and print amortization schedule
-        homeLoan.calculateAmortization();
+        HomeLoan home = new HomeLoan(homevalue, interestRate, tenure,appreciationRate,salvage);
+        home.calculateAmortization();
 
-        // SIP parameters
-        double monthlyInvestment = 10000; // Rs. 10,000 monthly SIP
-        double sipRate = 12; // 12% annual SIP return rate
-        int sipTenure = 15; // 15 years
+        double monthlyinvestment = 10000;
+        double sipRate = 12;
 
-        // Create SIP object
-        SIP sip = new SIP(monthlyInvestment, sipRate, sipTenure);
+        SIP sip = new SIP(monthlyinvestment, sipRate, tenure);
 
-        // Call the SIP method to calculate maturity amount
         double sipMaturity = sip.calculateMaturityAmount();
 
         // Display SIP maturity value
-        System.out.printf("\nTotal SIP Maturity Value after %d years: Rs. %.2f\n", sipTenure, sipMaturity);
+        System.out.println("Total SIP Maturity Value after " + tenure + " years: Rs. " + sipMaturity);
+        double finalDepreciatedValue = home.getFinalDepreciatedValue();
+        double finalAppreciatedValue = home.getFinalAppreciatedValue();
 
-        // Get the final depreciated and appreciated values of the home
-        double finalDepreciatedValue = homeLoan.getFinalDepreciatedValue();
-        double finalAppreciatedValue = homeLoan.getFinalAppreciatedValue();
+        System.out.println("Final Home Values after 15 years:");
+        System.out.printf("Final Depreciated Value of Home: Rs. %.2f\n", finalDepreciatedValue);
+        System.out.printf("Final Appreciated Value of Home: Rs. %.2f\n", finalAppreciatedValue);
 
-        // Print comparison results
-        System.out.println("\nComparison of SIP Maturity Value with Home Loan Values:");
-
-        // Compare SIP maturity with depreciated and appreciated home values
-        if (sipMaturity > finalAppreciatedValue) {
-            System.out.println("SIP value is greater than the appreciated home value.");
-        } else {
-            System.out.println("SIP value is less than or equal to the appreciated home value.");
-        }
-
-        if (sipMaturity > finalDepreciatedValue) {
-            System.out.println("SIP value is greater than the depreciated home value.");
-        } else {
-            System.out.println("SIP value is less than or equal to the depreciated home value.");
-        }
+        System.out.println("\nFinal SIP Value after 15 years:");
+        System.out.printf("SIP Maturity Value: Rs. %.2f\n", sipMaturity);
     }
 }
