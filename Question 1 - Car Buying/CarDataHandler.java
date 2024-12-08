@@ -5,7 +5,6 @@ public class CarDataHandler {
     static Map<String, Map<String, List<String>>> carprices = new HashMap<>();
     static Map<String, Map<String, String>> accessoriesprices = new HashMap<>();
 
-
     public static void insertData(){
         carprices.put("Alto K10", Map.of("variants", List.of("STD", "LXI", "VXI", "VXI+"), "price_range", List.of("3.99", "4.25", "4.75", "5.00", "5.96")));
         carprices.put("Wagon R", Map.of("variants", List.of("LXI", "VXI", "ZXI", "ZXI+"), "price_range", List.of("5.54", "6.25", "6.75", "7.00", "7.38")));
@@ -20,7 +19,6 @@ public class CarDataHandler {
         accessoriesprices.put("Car Care", Map.of("Car Covers", "₹1,000 - ₹5,000", "Cleaning Kits", "₹500 - ₹2,000", "Polish and Wax", "₹300 - ₹1,500", "Pressure Washers", "₹5,000 - ₹15,000"));
     }
 
-    @NotNull
     //lst of cars avaialble ee
     public static List<String> getAvailableCars(double maxbudget){
         List<String> availablecars = new ArrayList<>();
